@@ -1,8 +1,15 @@
-import { Link } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
 
 const Layout = ({ children }) => {
     return (
         <>
+            <Head>
+                <meta
+                    head-key="description"
+                    name="description"
+                    content="Laravel Inertia React"
+                />
+            </Head>
             <header>
                 <nav>
                     <Link className="nav-link" href="/">

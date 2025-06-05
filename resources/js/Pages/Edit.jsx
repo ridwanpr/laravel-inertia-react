@@ -1,16 +1,16 @@
 import { Head, useForm } from "@inertiajs/react";
 import { useRoute } from "../../../vendor/tightenco/ziggy/src/js";
 
-const Create = () => {
-    const { data, setData, post, errors, processing } = useForm({
-        body: "",
+const Edit = ({ post }) => {
+    const { data, setData, put, errors, processing } = useForm({
+        body: post.body,
     });
 
     const route = useRoute();
 
     const submit = (e) => {
         e.preventDefault();
-        post(route("posts.store"));
+        put(route("posts.update", post));
     };
 
     return (
@@ -19,10 +19,10 @@ const Create = () => {
                 <meta
                     head-key="description"
                     name="description"
-                    content="Create Post"
+                    content="Edit Post"
                 />
             </Head>
-            <h1 className="title">Create</h1>
+            <h1 className="title">Update Post</h1>
 
             <div className="w-1/2 mx-auto">
                 <form onSubmit={submit}>
@@ -38,7 +38,7 @@ const Create = () => {
                     )}
 
                     <button className="primary-btn mt-4" disabled={processing}>
-                        Create Post
+                        Update Post
                     </button>
                 </form>
             </div>
@@ -46,4 +46,4 @@ const Create = () => {
     );
 };
 
-export default Create;
+export default Edit;
